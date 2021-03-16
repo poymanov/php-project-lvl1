@@ -1,0 +1,12 @@
+{
+    "name": "hexlet/code",
+    "type": "project",
+    "description": "Hexlet Code",
+    "authors": [
+        {
+            "name": "Nicolay Poymanov",
+            "email": "n.poymanov@gmail.com"
+        }
+    ],
+    "require": {}
+}
