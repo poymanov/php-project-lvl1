@@ -2,11 +2,15 @@
     "name": "hexlet/code",
     "type": "project",
     "description": "Hexlet Code",
+    "license": "MIT",
     "authors": [
         {
             "name": "Nicolay Poymanov",
             "email": "n.poymanov@gmail.com"
         }
+    ],
+    "bin": [
+        "bin/brain-games"
     ],
     "require": {}
 }
