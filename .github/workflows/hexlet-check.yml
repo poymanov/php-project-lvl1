@@ -26,5 +26,6 @@ jobs:
         with:
           hexlet-id: ${{ secrets.HEXLET_ID }}
       - name: Lint
-        run: make lint
+        run: php -v
+        #run: composer run-script phpcs -- --standard=PSR12 src bin
 
