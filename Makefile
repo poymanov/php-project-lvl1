@@ -7,5 +7,8 @@ install:
 validate:
 	docker-compose run --rm php-cli composer validate
 
-lint:
+lint2:
 	docker-compose run --rm php-cli composer run-script phpcs -- --standard=PSR12 src bin
+
+lint:
+	composer run-script phpcs -- --standard=PSR12 src bin
