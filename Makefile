@@ -10,6 +10,9 @@ brain-calc:
 brain-gcd:
 	docker-compose run --rm php-cli php bin/brain-gcd
 
+brain-progression:
+	docker-compose run --rm php-cli php bin/brain-progression
+
 install:
 	docker-compose run --rm php-cli composer install
 

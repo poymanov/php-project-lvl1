@@ -17,7 +17,14 @@
         "bin/brain-even"
     ],
     "autoload": {
-        "files": ["src/Cli.php", "src/BrainEven.php", "src/BrainCalc.php", "src/Engine.php", "src/BrainGcd.php"]
+        "files": [
+            "src/Cli.php",
+            "src/BrainEven.php",
+            "src/BrainCalc.php",
+            "src/Engine.php",
+            "src/BrainGcd.php",
+            "src/BrainProgression.php"
+        ]
     },
     "require": {
         "wp-cli/php-cli-tools": "^0.11.12"

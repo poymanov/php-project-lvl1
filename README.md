@@ -10,3 +10,6 @@ https://asciinema.org/a/400338
 
 Игра "НОД":
 https://asciinema.org/a/400352
+
+Игра "Арифметическая прогрессия":
+https://asciinema.org/a/400358
