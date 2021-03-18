@@ -8,7 +8,7 @@ use function cli\line;
 use function cli\prompt;
 
 const MIN_INT = 0;
-const MAX_INT = 10;
+const MAX_INT = 100;
 
 const MAX_ATTEMPTS = 3;
 const WIN_COUNT    = 3;

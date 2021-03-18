@@ -7,6 +7,9 @@ brain-even:
 brain-calc:
 	docker-compose run --rm php-cli php bin/brain-calc
 
+brain-gcd:
+	docker-compose run --rm php-cli php bin/brain-gcd
+
 install:
 	docker-compose run --rm php-cli composer install
 
