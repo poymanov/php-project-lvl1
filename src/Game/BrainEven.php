@@ -8,6 +8,9 @@ use Brain\Games\Engine;
 
 use function cli\line;
 
+const CORRECT_ANSWER = 'yes';
+const WRONG_ANSWER   = 'no';
+
 function run()
 {
     Engine\printWelcomeMessage();
@@ -47,5 +50,5 @@ function printQuestion($randomInteger)
 
 function getCorrectResult($randomInteger)
 {
-    return $randomInteger % 2 === 0 ? 'yes' : 'no';
+    return $randomInteger % 2 === 0 ? CORRECT_ANSWER : WRONG_ANSWER;
 }
