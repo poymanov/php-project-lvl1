@@ -4,6 +4,9 @@ brain-games:
 brain-even:
 	docker-compose run --rm php-cli php bin/brain-even
 
+brain-calc:
+	docker-compose run --rm php-cli php bin/brain-calc
+
 install:
 	docker-compose run --rm php-cli composer install
 

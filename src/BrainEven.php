@@ -4,52 +4,48 @@ declare(strict_types=1);
 
 namespace Brain\Games\BrainEven;
 
-use function cli\line;
-use function cli\prompt;
+use Brain\Games\Engine;
 
-const MIN_INT      = 0;
-const MAX_INT      = 100;
-const MAX_ATTEMPTS = 3;
-const WIN_COUNT    = 3;
+use function cli\line;
 
 function run()
 {
-    line('Welcome to the Brain Game!');
-    $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
+    Engine\printWelcomeMessage();
 
-    line('Answer "yes" if the number is even, otherwise answer "no".');
+    $name = Engine\askName();
 
-    $count = 0;
+    printGameRules();
 
-    for ($i = 1; $i <= MAX_ATTEMPTS; $i++) {
-        $randomInteger = random_int(MIN_INT, MAX_INT);
-        line("Question: %s", $randomInteger);
+    $successAttempts = 0;
 
-        $answer = prompt('Your answer');
+    for ($i = 1; $i <= Engine\MAX_ATTEMPTS; $i++) {
+        $randomInteger = random_int(Engine\MIN_INT, Engine\MAX_INT);
 
-        if (checkAnswer($randomInteger, $answer, $name)) {
-            $count++;
+        printQuestion($randomInteger);
+
+        $answer = Engine\askAnswer();
+
+        $correctResult = getCorrectResult($randomInteger);
+
+        if (Engine\isAnswerCorrect($correctResult, $answer, $name)) {
+            $successAttempts++;
         }
     }
 
-    if ($count == WIN_COUNT) {
-        line("Congratulations, %s!", $name);
-    }
+    Engine\printGameResult($successAttempts, $name);
 }
 
-function checkAnswer($randomInteger, $answer, $username): bool
+function printGameRules()
 {
-    $result = $randomInteger % 2 === 0 ? 'yes' : 'no';
+    line('Answer "yes" if the number is even, otherwise answer "no".');
+}
 
-    if ($result == $answer) {
-        line('Correct!');
+function printQuestion($randomInteger)
+{
+    line("Question: %s", $randomInteger);
+}
 
-        return true;
-    } else {
-        line("'%s' is wrong answer ;(. Correct answer was '%s'", $answer, $result);
-        line("Let's try again, %s!", $username);
-
-        return false;
-    }
+function getCorrectResult($randomInteger)
+{
+    return $randomInteger % 2 === 0 ? 'yes' : 'no';
 }
