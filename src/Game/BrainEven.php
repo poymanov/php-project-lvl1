@@ -2,14 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Brain\Games\BrainPrime;
+namespace Brain\Games\Game\BrainEven;
 
 use Brain\Games\Engine;
 
 use function cli\line;
-
-const CORRECT_ANSWER = 'yes';
-const WRONG_ANSWER   = 'no';
 
 function run()
 {
@@ -40,7 +37,7 @@ function run()
 
 function printGameRules()
 {
-    line('Answer "yes" if given number is prime. Otherwise answer "no".');
+    line('Answer "yes" if the number is even, otherwise answer "no".');
 }
 
 function printQuestion($randomInteger)
@@ -50,11 +47,5 @@ function printQuestion($randomInteger)
 
 function getCorrectResult($randomInteger)
 {
-    for ($x = 2; $x <= sqrt($randomInteger); $x++) {
-        if ($randomInteger % $x == 0) {
-            return WRONG_ANSWER;
-        }
-    }
-
-    return CORRECT_ANSWER;
+    return $randomInteger % 2 === 0 ? 'yes' : 'no';
 }

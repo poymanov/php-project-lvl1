@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Brain\Games\BrainProgression;
+namespace Brain\Games\Game\BrainProgression;
 
 use Brain\Games\Engine;
 

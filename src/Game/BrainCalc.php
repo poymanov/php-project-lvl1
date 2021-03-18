@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Brain\Games\BrainCalc;
+namespace Brain\Games\Game\BrainCalc;
 
 use Brain\Games\Engine;
 

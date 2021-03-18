@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Brain\Games\BrainGcd;
+namespace Brain\Games\Game\BrainGcd;
 
 use Brain\Games\Engine;
 
