@@ -33,7 +33,7 @@ function getGameRules(): string
 
 function printQuestion(array $progression, int $correctResult): void
 {
-    $progression[array_search($correctResult, $progression, false)] = '..';
+    $progression[array_search($correctResult, $progression, true)] = '..';
 
     line("Question: %s", implode(' ', $progression));
 }
