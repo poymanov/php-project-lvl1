@@ -13,34 +13,17 @@ const WRONG_ANSWER   = 'no';
 
 function run()
 {
-    Engine\printWelcomeMessage();
-
-    $name = Engine\askName();
-
-    printGameRules();
-
-    $successAttempts = 0;
-
-    for ($i = 1; $i <= Engine\MAX_ATTEMPTS; $i++) {
+    Engine\play(getGameRules(), function () {
         $randomInteger = random_int(Engine\MIN_INT, Engine\MAX_INT);
-
         printQuestion($randomInteger);
 
-        $answer = Engine\askAnswer();
-
-        $correctResult = getCorrectResult($randomInteger);
-
-        if (Engine\isAnswerCorrect($correctResult, $answer, $name)) {
-            $successAttempts++;
-        }
-    }
-
-    Engine\printGameResult($successAttempts, $name);
+        return getCorrectResult($randomInteger);
+    });
 }
 
-function printGameRules()
+function getGameRules()
 {
-    line('Answer "yes" if the number is even, otherwise answer "no".');
+    return 'Answer "yes" if the number is even, otherwise answer "no".';
 }
 
 function printQuestion($randomInteger)

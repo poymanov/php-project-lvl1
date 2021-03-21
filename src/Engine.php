@@ -13,6 +13,34 @@ const MAX_INT = 100;
 const MAX_ATTEMPTS = 3;
 const WIN_COUNT    = 3;
 
+function play($rulesDescription, $game)
+{
+    printWelcomeMessage();
+
+    $name = askName();
+
+    printGameRules($rulesDescription);
+
+    $isSuccess = true;
+
+    for ($i = 1; $i <= MAX_ATTEMPTS; $i++) {
+        $result = $game();
+        $answer = askAnswer();
+
+        if (!isAnswerCorrect2($result, $answer)) {
+            $isSuccess = false;
+            printFailedMessage($answer, $result, $name);
+            break;
+        }
+
+        line('Correct!');
+    }
+
+    if ($isSuccess) {
+        printSuccessMessage($name);
+    }
+}
+
 function printWelcomeMessage()
 {
     line('Welcome to the Brain Games!');
@@ -38,6 +66,17 @@ function printGameResult($successAttempts, $name)
     }
 }
 
+function printSuccessMessage($name)
+{
+    line("Congratulations, %s!", $name);
+}
+
+function printFailedMessage($answer, $result, $name)
+{
+    line("'%s' is wrong answer ;(. Correct answer was '%s'", $answer, $result);
+    line("Let's try again, %s!", $name);
+}
+
 function isAnswerCorrect($result, $answer, $name)
 {
     if ($result == $answer) {
@@ -50,4 +89,14 @@ function isAnswerCorrect($result, $answer, $name)
 
         return false;
     }
+}
+
+function isAnswerCorrect2($result, $answer)
+{
+    return $result == $answer;
+}
+
+function printGameRules($rulesDescription)
+{
+    line($rulesDescription);
 }
