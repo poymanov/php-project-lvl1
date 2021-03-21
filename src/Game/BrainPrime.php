@@ -34,6 +34,10 @@ function printQuestion($randomInteger)
 
 function getCorrectResult($randomInteger)
 {
+    if ($randomInteger == 0) {
+        return CORRECT_ANSWER;
+    }
+
     for ($x = 2; $x <= sqrt($randomInteger); $x++) {
         if ($randomInteger % $x == 0) {
             return WRONG_ANSWER;
