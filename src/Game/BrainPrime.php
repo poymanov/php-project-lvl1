@@ -11,7 +11,7 @@ use function cli\line;
 const CORRECT_ANSWER = 'yes';
 const WRONG_ANSWER   = 'no';
 
-function run()
+function run(): void
 {
     Engine\play(getGameRules(), function () {
         $randomInteger = random_int(Engine\MIN_INT, Engine\MAX_INT);
@@ -22,17 +22,17 @@ function run()
     });
 }
 
-function getGameRules()
+function getGameRules(): string
 {
     return 'Answer "yes" if given number is prime. Otherwise answer "no".';
 }
 
-function printQuestion($randomInteger)
+function printQuestion(int $randomInteger): void
 {
     line("Question: %s", $randomInteger);
 }
 
-function getCorrectResult($randomInteger)
+function getCorrectResult(int $randomInteger): string
 {
     if ($randomInteger == 0) {
         return CORRECT_ANSWER;

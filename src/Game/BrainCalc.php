@@ -18,7 +18,7 @@ const OPERATIONS_LIST = [
     OPERATION_MULTIPLE,
 ];
 
-function run()
+function run(): void
 {
     Engine\play(getGameRules(), function () {
         $leftOperand  = random_int(Engine\MIN_INT, Engine\MAX_INT);
@@ -30,17 +30,17 @@ function run()
     });
 }
 
-function getGameRules()
+function getGameRules(): string
 {
     return 'What is the result of the expression?';
 }
 
-function printQuestion($leftOperand, $rightOperand, $operation)
+function printQuestion(int $leftOperand, int $rightOperand, string $operation): void
 {
     line("Question: %s", "{$leftOperand} {$operation} {$rightOperand}");
 }
 
-function getCorrectResult($leftOperand, $rightOperand, $operation)
+function getCorrectResult(int $leftOperand, int $rightOperand, string $operation): int
 {
     switch ($operation) {
         case OPERATION_PLUS:

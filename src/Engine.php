@@ -12,7 +12,7 @@ const MAX_INT = 100;
 
 const MAX_ATTEMPTS = 3;
 
-function play($rulesDescription, $game)
+function play(string $rulesDescription, callable $game): void
 {
     printWelcomeMessage();
 
@@ -40,12 +40,12 @@ function play($rulesDescription, $game)
     }
 }
 
-function printWelcomeMessage()
+function printWelcomeMessage(): void
 {
     line('Welcome to the Brain Games!');
 }
 
-function askName()
+function askName(): string
 {
     $name = prompt('May I have your name?');
     line("Hello, %s!", $name);
@@ -53,28 +53,28 @@ function askName()
     return $name;
 }
 
-function askAnswer()
+function askAnswer(): string
 {
     return prompt('Your answer');
 }
 
-function printSuccessMessage($name)
+function printSuccessMessage(string $name): void
 {
     line("Congratulations, %s!", $name);
 }
 
-function printFailedMessage($answer, $result, $name)
+function printFailedMessage(string $answer, string $result, string $name): void
 {
     line("'%s' is wrong answer ;(. Correct answer was '%s'", $answer, $result);
     line("Let's try again, %s!", $name);
 }
 
-function isAnswerCorrect($result, $answer)
+function isAnswerCorrect(string $result, string $answer): bool
 {
     return $result == $answer;
 }
 
-function printGameRules($rulesDescription)
+function printGameRules(string $rulesDescription): void
 {
     line($rulesDescription);
 }

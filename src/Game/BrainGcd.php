@@ -8,7 +8,7 @@ use Brain\Games\Engine;
 
 use function cli\line;
 
-function run()
+function run(): void
 {
     Engine\play(getGameRules(), function () {
         $firstInteger  = random_int(Engine\MIN_INT, Engine\MAX_INT);
@@ -20,17 +20,17 @@ function run()
     });
 }
 
-function getGameRules()
+function getGameRules(): string
 {
     return 'Find the greatest common divisor of given numbers.';
 }
 
-function printQuestion($firstInteger, $secondInteger)
+function printQuestion(int $firstInteger, int $secondInteger): void
 {
     line("Question: %s", "$firstInteger $secondInteger");
 }
 
-function getCorrectResult($firstInteger, $secondInteger)
+function getCorrectResult(int $firstInteger, int $secondInteger): int
 {
     while ($secondInteger != 0) {
         $temp          = $firstInteger % $secondInteger;

@@ -14,7 +14,7 @@ const MAX_LENGTH = 15;
 const MIN_STEP = 1;
 const MAX_STEP = 10;
 
-function run()
+function run(): void
 {
     Engine\play(getGameRules(), function () {
         $progression   = createProgression();
@@ -26,26 +26,26 @@ function run()
     });
 }
 
-function getGameRules()
+function getGameRules(): string
 {
     return 'What number is missing in the progression?';
 }
 
-function printQuestion($progression, $correctResult)
+function printQuestion(array $progression, string $correctResult): void
 {
     $progression[array_search($correctResult, $progression)] = '..';
 
     line("Question: %s", implode(' ', $progression));
 }
 
-function getCorrectResult($progression)
+function getCorrectResult(array $progression): string
 {
     $randomIndex = array_rand($progression);
 
     return $progression[$randomIndex];
 }
 
-function createProgression()
+function createProgression(): array
 {
     $progression = [];
 
