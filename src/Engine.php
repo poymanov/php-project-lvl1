@@ -23,8 +23,8 @@ function play(string $rulesDescription, callable $game): void
     $isSuccess = true;
 
     for ($i = 1; $i <= MAX_ATTEMPTS; $i++) {
-        $result = $game();
-        $answer = askAnswer();
+        $result = (string) $game();
+        $answer = (string) askAnswer();
 
         if (!isAnswerCorrect($result, $answer)) {
             $isSuccess = false;
