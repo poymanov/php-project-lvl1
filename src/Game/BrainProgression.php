@@ -16,47 +16,33 @@ const MAX_STEP = 10;
 
 function run()
 {
-    Engine\printWelcomeMessage();
-
-    $name = Engine\askName();
-
-    printGameRules();
-
-    $successAttempts = 0;
-
-    for ($i = 1; $i <= Engine\MAX_ATTEMPTS; $i++) {
-        $progression = createProgression();
-
-        printQuestion($progression);
-
-        $answer = Engine\askAnswer();
-
+    Engine\play(getGameRules(), function () {
+        $progression   = createProgression();
         $correctResult = getCorrectResult($progression);
 
-        if (Engine\isAnswerCorrect($correctResult, $answer, $name)) {
-            $successAttempts++;
-        }
-    }
+        printQuestion($progression, $correctResult);
 
-    Engine\printGameResult($successAttempts, $name);
+        return $correctResult;
+    });
 }
 
-function printGameRules()
+function getGameRules()
 {
-    line('What number is missing in the progression?');
+    return 'What number is missing in the progression?';
 }
 
-function printQuestion($progression)
+function printQuestion($progression, $correctResult)
 {
-    $randomIndex               = array_rand($progression);
-    $progression[$randomIndex] = '..';
+    $progression[array_search($correctResult, $progression)] = '..';
 
     line("Question: %s", implode(' ', $progression));
 }
 
 function getCorrectResult($progression)
 {
-    return $progression[1] - $progression[0];
+    $randomIndex = array_rand($progression);
+
+    return $progression[$randomIndex];
 }
 
 function createProgression()
