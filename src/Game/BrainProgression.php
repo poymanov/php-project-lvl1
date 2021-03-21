@@ -22,7 +22,7 @@ function run(): void
 
         printQuestion($progression, $correctResult);
 
-        return (string) $correctResult;
+        return $correctResult;
     });
 }
 
@@ -31,14 +31,14 @@ function getGameRules(): string
     return 'What number is missing in the progression?';
 }
 
-function printQuestion(array $progression, string $correctResult): void
+function printQuestion(array $progression, int $correctResult): void
 {
     $progression[array_search($correctResult, $progression)] = '..';
 
     line("Question: %s", implode(' ', $progression));
 }
 
-function getCorrectResult(array $progression): string
+function getCorrectResult(array $progression): int
 {
     $randomIndex = array_rand($progression);
 
