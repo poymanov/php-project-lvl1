@@ -13,7 +13,7 @@ const WRONG_ANSWER   = 'no';
 
 function run(): void
 {
-    Engine\play(getGameRules(), function () {
+    Engine\play(getGameRules(), function (): string {
         $randomInteger = random_int(Engine\MIN_INT, Engine\MAX_INT);
 
         printQuestion($randomInteger);

@@ -20,7 +20,7 @@ const OPERATIONS_LIST = [
 
 function run(): void
 {
-    Engine\play(getGameRules(), function () {
+    Engine\play(getGameRules(), function (): int {
         $leftOperand  = random_int(Engine\MIN_INT, Engine\MAX_INT);
         $rightOperand = random_int(Engine\MIN_INT, Engine\MAX_INT);
         $operation    = OPERATIONS_LIST[array_rand(OPERATIONS_LIST)];

@@ -16,7 +16,7 @@ const MAX_STEP = 10;
 
 function run(): void
 {
-    Engine\play(getGameRules(), function () {
+    Engine\play(getGameRules(), function (): int {
         $progression   = createProgression();
         $correctResult = getCorrectResult($progression);
 
@@ -33,7 +33,7 @@ function getGameRules(): string
 
 function printQuestion(array $progression, int $correctResult): void
 {
-    $progression[array_search($correctResult, $progression)] = '..';
+    $progression[array_search($correctResult, $progression, false)] = '..';
 
     line("Question: %s", implode(' ', $progression));
 }

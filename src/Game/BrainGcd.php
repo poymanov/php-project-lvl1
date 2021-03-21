@@ -10,7 +10,7 @@ use function cli\line;
 
 function run(): void
 {
-    Engine\play(getGameRules(), function () {
+    Engine\play(getGameRules(), function (): int {
         $firstInteger  = random_int(Engine\MIN_INT, Engine\MAX_INT);
         $secondInteger = random_int(Engine\MIN_INT, Engine\MAX_INT);
 

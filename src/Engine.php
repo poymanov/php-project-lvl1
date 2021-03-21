@@ -24,7 +24,7 @@ function play(string $rulesDescription, callable $game): void
 
     for ($i = 1; $i <= MAX_ATTEMPTS; $i++) {
         $result = (string) $game();
-        $answer = (string) askAnswer();
+        $answer = askAnswer();
 
         if (!isAnswerCorrect($result, $answer)) {
             $isSuccess = false;
