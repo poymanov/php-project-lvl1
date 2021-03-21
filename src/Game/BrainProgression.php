@@ -22,7 +22,7 @@ function run(): void
 
         printQuestion($progression, $correctResult);
 
-        return $correctResult;
+        return (string) $correctResult;
     });
 }
 
