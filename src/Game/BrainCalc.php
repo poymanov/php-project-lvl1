@@ -20,36 +20,19 @@ const OPERATIONS_LIST = [
 
 function run()
 {
-    Engine\printWelcomeMessage();
-
-    $name = Engine\askName();
-
-    printGameRules();
-
-    $successAttempts = 0;
-
-    for ($i = 1; $i <= Engine\MAX_ATTEMPTS; $i++) {
+    Engine\play(getGameRules(), function () {
         $leftOperand  = random_int(Engine\MIN_INT, Engine\MAX_INT);
         $rightOperand = random_int(Engine\MIN_INT, Engine\MAX_INT);
         $operation    = OPERATIONS_LIST[array_rand(OPERATIONS_LIST)];
-
         printQuestion($leftOperand, $rightOperand, $operation);
 
-        $answer = Engine\askAnswer();
-
-        $correctResult = getCorrectResult($leftOperand, $rightOperand, $operation);
-
-        if (Engine\isAnswerCorrect($correctResult, $answer, $name)) {
-            $successAttempts++;
-        }
-    }
-
-    Engine\printGameResult($successAttempts, $name);
+        return getCorrectResult($leftOperand, $rightOperand, $operation);
+    });
 }
 
-function printGameRules()
+function getGameRules()
 {
-    line('What is the result of the expression?');
+    return 'What is the result of the expression?';
 }
 
 function printQuestion($leftOperand, $rightOperand, $operation)
